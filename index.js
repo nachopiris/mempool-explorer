@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-const { PROVIDER_URI, ROUTER } = process.env
+const { PROVIDER_URI } = process.env
 
 const options = {
   timeout: 30000,
@@ -31,7 +31,7 @@ const init = () => {
     setTimeout(async () => {
       try {
         const tx = await web3.eth.getTransaction(txHash)
-        if (tx && tx.to === ROUTER && tx.input.slice(0, 10) === '0xf91b3f72') {
+        if (tx && tx.from === "0xD48d49BAAbB5176A431E2089AA99D16B74E2bBF8") {
           console.log(tx, new Date())
         }
       } catch (err) {
